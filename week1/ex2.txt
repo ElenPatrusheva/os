@@ -1,0 +1,67 @@
+    1  gcc
+    2  sudo apt install gcc
+    3  ping google.com
+    4  sudo apt update
+    5  sudo apt update --help
+    6  sudo apt full-upgrade
+    7  sudo apt install gcc
+    8  sudo apt install g++
+    9  sudo apt update
+   10  sudo apt upgrade
+   11  gcc
+   12  vi main.cpp
+   13  gcc main.cpp 
+   14  gcc --std=c98 main.cpp 
+   15  gcc --std=c90 main.cpp 
+   16  gcc
+   17  gcc main.cpp 
+   18  mv main.cpp main.c
+   19  gcc main.c
+   20  ./a.out
+   21  nano main.c 
+   22  gcc main.c
+   23  ./a.out
+   24  gcc main.c
+   25  ./a.out 
+   26  a.out
+   27  . a.out
+   28  ./a.out
+   29  whoami
+   30  hostname
+   31  man <iten>
+   32  man <item>
+   33  man whoami
+   34  less
+   35  head
+   36  cd Desctop
+   37  cd Desktop
+   38  ls
+   39  cd..
+   40  cd ..
+   41  mkdir os
+   42  sd os
+   43  cd os
+   44  mkdir week1
+   45  cd week1
+   46  mkdir
+   47  mkdir ex1.txt
+   48  ls
+   49  rm ex1.txt
+   50  rm - r ex1.txt
+   51  rm -r ex1.txt
+   52  ls
+   53  echo > ex1.txt
+   54  ls
+   55  ls /usr/bin
+   56  ls /usr/bin | grep gcc
+   57  ls /usr/bin | grep gcc | sort -r
+   58  ls /usr/bin | grep gcc | sort -r > ex1.txt 
+   59  mkdir ex2.txt
+   60  man -h 
+   61  echo > newfile.txt
+   62  rm -r ex2.txt
+   63  cat > ex2.txt
+   64  ls
+   65  rm newfile.txt
+   66  ls
+   67  history > ex2.txt 
