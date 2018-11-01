@@ -1,37 +1,44 @@
-#include <stdio.h>
+#include <string.h>
 #include <sys/stat.h>
 #include <fcntl.h>
-#include <errno.h>
-#include <string.h>
+#include <stdio.h>
 #include <sys/mman.h>
+#include <errno.h>
+
 
 int main(){
-    struct stat status;
 
+    int fileOpen;
+    struct stat fileStat;
+    
 
-    int file_open = open("ex1.txt", O_RDWR);
+    if (stat("ex1.txt", &fileStat) < 0){
+        perror("File cannot get stat ");
+        return ENOENT;
+    }
+    if ((fileOpen = open("ex1.txt", O_RDWR)) < 0){
+        perror("File cannot be opened");
+        return ENOENT;
+    } 
 
-    if (file_open < 0){
-        perror("file is not available to open");
-        return 0;
+    size_t fileSize = (size_t)fileStat.st_size;
+    char* text = "This is a nice day";
+    if (fileSize < strlen(text)){
+        fileSize = strlen(text);
     }
 
-    size_t file_size = (size_t)status.st_size;
-    char text[] = "This is a nice day";
-    if (file_size < strlen(text) ){
-        file_size = strlen(text);
-    }
-
-    char * map = (char*)(long)(mmap(0, file_size, PROT_READ| PROT_WRITE, MAP_SHARED, file_open, 0));
+    char* map;
+    map = (char*)(long)(mmap(0, fileSize, PROT_READ| PROT_WRITE, MAP_SHARED, fileOpen, 0));
     if(map == MAP_FAILED){
-        perror("Impossible to map file");
-        return 0;
+        perror("The file cannot be mapped");
+        return EBADF;
     }
 
-    memset(map, ' ', file_size);
+    memset(map, ' ', fileSize);
     strcpy(map, text);
     map[strlen(text)] = ' ';
-    munmap(map, file_size);
+
+    munmap(map, fileSize);
 
     return 0;
 }
